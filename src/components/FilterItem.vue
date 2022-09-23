@@ -22,7 +22,8 @@ import { useStore } from 'vuex';
      const store = useStore()
   
       const deleteFilter = () => {
-        store.commit('deleteFilterItem',name.value)
+       
+       store.dispatch('delete',name.value)
       }
   
       return {
