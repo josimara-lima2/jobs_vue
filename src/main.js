@@ -1,6 +1,9 @@
 
 import { createApp } from 'vue'
 import App from './App.vue'
-import store from './store'
+import {createPinia} from 'pinia'
+import piniaPersist from 'pinia-plugin-persist'
 
-createApp(App).use(store).mount('#app')
+const pinia = createPinia()
+pinia.use(piniaPersist)
+createApp(App).use(pinia).mount('#app')

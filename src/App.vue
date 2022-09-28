@@ -1,28 +1,20 @@
 <template>
   <WrapperFilter/>
-  <JobItems/>
+  <JobItems />
 </template>
 
 <script>
-import { useStore } from 'vuex';
 import JobItems from './components/JobItems.vue';
 import WrapperFilter from './components/WrapperFilter.vue';
-
+import {jobStore} from '@/store/job'
 
 export default {
-  name: 'App',
-  components: {
-    JobItems,
-    WrapperFilter
-},
-
-setup(){
-  const store = useStore()
-  store.dispatch('getJobs')
-  return{
-
-  }
-}
+    components:{ JobItems,
+    WrapperFilter},
+   setup(){
+    const store = jobStore()
+        store.getUsers()
+   }
 }
 </script>
 

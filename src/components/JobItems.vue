@@ -1,18 +1,23 @@
 <template>
-   <JobItem :job="job" v-for="job in $store.state.jobs" :key="job.id"/>
+   <JobItem :job="job" v-for="job in jobsList" :key="job.id+round"/>
+   
 </template>
 
 <script>
-import { ref } from 'vue';
-import JobItem from './JobItem.vue';
+import JobItem from '@/components/JobItem.vue'
+import { ref } from '@vue/reactivity'
+import {jobStore} from '@/store/job'
 export default {
-    components: { JobItem },
+    components:{JobItem},
+    
     setup(){
-        const jobs = ref([])
-
-        return{
-            jobs
-        }
+        const store = jobStore()
+        const jobsList = store.job
+        const round = ref(Math.random(0,10))
+       return{
+        jobsList,
+        round
+       }
     }
 }
 </script>

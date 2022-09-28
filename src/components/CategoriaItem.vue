@@ -1,34 +1,33 @@
 <template>
   <div class="card-categoria" @click="onFilter">
-    {{ name }}
+    categoria
   </div>
 </template>
  
  <script>
-import { ref } from "vue";
-import { useStore } from "vuex";
+
 
 export default {
-  props: {
-    categoria: {
-      type: Object,
-      default: () => {},
-    },
-  },
-  setup(props) {
-    const name = ref(props.categoria.name);
-    const store = useStore();
+//   props: {
+//     categoria: {
+//       type: Object,
+//       default: () => {},
+//     },
+//   },
+//   setup(props) {
+//     const name = ref(props.categoria.name);
+//     const store = useStore();
 
-    const onFilter = () => {
-      store.commit('onFilter',name.value)
-    };
+//     const onFilter = () => {
+//       store.commit('onFilter',name.value)
+//     };
 
-    return {
-      name,
-      onFilter,
-    };
-  },
-};
+//     return {
+//       name,
+//       onFilter,
+//     };
+//   },
+ };
 </script>
  
  <style scoped>

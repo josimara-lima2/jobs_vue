@@ -7,33 +7,13 @@
       {{ position }}
     </div>
     <div class="categorias">
-      <CategoriaItem
-        v-for="language in languages"
-        :key="language"
-        :categoria="{
-          name: language,
-        }"
-      />
-      <CategoriaItem
-        v-for="tool in tools"
-        :key="tool"
-        :categoria="{
-          name: tool,
-        }"
-      />
-      <CategoriaItem
-      
-        :categoria="{
-          name: role,
-        }"
-      />
+    
     </div>
   </div>
 </template>
 
 <script>
-import { ref } from "vue";
-import CategoriaItem from "./CategoriaItem.vue";
+import { ref } from '@vue/reactivity';
 
 export default {
   props: {
@@ -60,7 +40,7 @@ export default {
       role,
     };
   },
-  components: { CategoriaItem },
+  
 };
 </script>
 
