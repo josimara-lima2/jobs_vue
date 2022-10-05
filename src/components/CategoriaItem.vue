@@ -1,32 +1,36 @@
 <template>
   <div class="card-categoria" @click="onFilter">
-    categoria
+    {{categoria.name}}
   </div>
 </template>
  
  <script>
+//import { filterStore } from '@/store/filters';
+import { ref } from '@vue/reactivity';
 
 
 export default {
-//   props: {
-//     categoria: {
-//       type: Object,
-//       default: () => {},
-//     },
-//   },
-//   setup(props) {
-//     const name = ref(props.categoria.name);
-//     const store = useStore();
+  props: {
+    categoria: {
+      type: Object,
+      default: () => {}
+    },
+   },
+  setup(props) {
+    
+   const newName = ref(props.categoria.name)
 
-//     const onFilter = () => {
-//       store.commit('onFilter',name.value)
-//     };
+    const onFilter = () => {
+      //const store = filterStore()
+      console.log(newName.value)
+        //store.addFilter(newName.value)
+    };
 
-//     return {
-//       name,
-//       onFilter,
-//     };
-//   },
+    return {
+   
+      onFilter,
+    };
+  },
  };
 </script>
  

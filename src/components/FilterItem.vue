@@ -1,12 +1,31 @@
 <template>
     <div class="card-filter" >
-
-filter      <button >x</button>
+{{name}}
+      <button >x</button>
     </div>
   </template>
    
    <script>
- 
+import { ref } from '@vue/reactivity';
+ export default {
+  props: {
+    name: {
+      type: String,
+      default: " "
+    },
+   },
+  setup(props) {
+    
+   const nameP = ref(props.name)
+
+   
+
+    return {
+   
+      nameP,
+    };
+  },
+ };
   
   
   

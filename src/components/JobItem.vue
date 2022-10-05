@@ -7,6 +7,8 @@
       {{ position }}
     </div>
     <div class="categorias">
+    <CategoriaItem   :categoria="{name: language}" v-for="language in languages" :key="language + round"/>
+    <CategoriaItem  :categoria="{name: tool}" v-for="tool in tools" :key="tool + round"/>
     
     </div>
   </div>
@@ -14,33 +16,36 @@
 
 <script>
 import { ref } from '@vue/reactivity';
+import CategoriaItem from './CategoriaItem.vue';
 
 export default {
-  props: {
-    job: {
-      type: Object,
-      default: () => {},
+    props: {
+        job: {
+            type: Object,
+            default: () => { },
+        },
     },
-  },
-  setup(props) {
-    const position = ref(props.job.position);
-    const logo = ref(props.job.logo);
-    const languages = ref(props.job.languages);
-    const tools = ref(props.job.tools);
-    const role = ref(props.job.role)
-    const getImage = (imagePath) => {
-      return require(`../assets/images/${imagePath}`);
-    };
-    return {
-      position,
-      logo,
-      getImage,
-      languages,
-      tools,
-      role,
-    };
-  },
-  
+    setup(props) {
+        const position = ref(props.job.position);
+        const logo = ref(props.job.logo);
+        const languages = ref(props.job.languages);
+        const tools = ref(props.job.tools);
+        const role = ref(props.job.role);
+        const getImage = (imagePath) => {
+            return require(`../assets/images/${imagePath}`);
+        };
+        const round = ref(Math.random(0,10))
+        return {
+            position,
+            logo,
+            getImage,
+            languages,
+            tools,
+            role,
+            round
+        };
+    },
+    components: { CategoriaItem }
 };
 </script>
 
