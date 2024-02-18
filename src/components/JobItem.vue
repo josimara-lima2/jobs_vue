@@ -10,7 +10,7 @@
           <span class="new" v-if="jobProps.new">New!</span>
           <span class="featured" v-if="jobProps.featured">Featured</span>
         </div>
-        <div>{{ position }}</div>
+        <div class="position">{{ position }}</div>
       </div>
     </div>
     <div class="categorias">
@@ -103,6 +103,11 @@ export default {
   align-items: center;
 }
 
+.position{
+  font-weight: 600;
+  color: #253031;
+  font-size: 18px;
+}
 .new {
   border-radius: 12px;
   background: #5da4a4;
@@ -112,7 +117,7 @@ export default {
 
 .featured {
   border-radius: 12px;
-  background: black;
+  background: #253031;
   padding: 4px 6px;
   color: white;
 }
@@ -120,6 +125,8 @@ export default {
 .company {
   display: flex;
   gap: 4px;
+  color: #5da4a4;
+  font-weight: 600;
 }
 
 .categorias {

@@ -25,19 +25,19 @@ export const jobStore = defineStore('job',{
                 }
             },
 
-           async filterJobs(search){
+           async filterJobs(searchs){
                 await axios.get('http://localhost:3000/jobs').then(r =>  {
                 const filterLanguages =  r.data.filter(item => {
-                    const lang = item.languages
-                    return lang.includes(search)
+                    const itens = [...item.languages, ...item.tools ]
+                    return  searchs.every(item => itens.includes(item))
                 })
-
-                const filtertools =  r.data.filter(item => {
-                    const lang = item.tools
-                    return lang.includes(search)
-                })
+                console.log(filterLanguages, 'aqquii')
+                // const filtertools =  r.data.filter(item => {
+                //     const lang = item.tools
+                //     return lang.includes(search)
+                // })
                 this.$patch({
-                    job: [...filtertools, ...filterLanguages]
+                    job: [...filterLanguages]
                 })
             })
             }

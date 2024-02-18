@@ -27,8 +27,9 @@ export default {
       store.removeFilter(item);
      console.log(store.filtersItens)
      if(store.filtersItens.length){
-
-       store.filtersItens.map(item => storeJob.filterJobs(item))
+      storeJob.filterJobs(store.filtersItens)
+      console.log(storeJob.job)
+     //  store.filtersItens.map(item => storeJob.filterJobs(item))
      }else{
        storeJob.getUsers()
      }
@@ -79,6 +80,6 @@ export default {
 }
 
 .btn-remove:hover{
-    background: black
+    background: #253031
 }
 </style>

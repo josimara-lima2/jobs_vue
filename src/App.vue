@@ -27,11 +27,10 @@ export default {
 body{
   margin: 0;
   padding: 0;
+  font-family: "League Spartan", sans-serif;
 }
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+
   text-align: center;
   font-size: 15px;
   color: #2c3e50;

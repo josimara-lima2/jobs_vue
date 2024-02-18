@@ -7,6 +7,7 @@
  <script>
 //import { filterStore } from '@/store/filters';
 import { filterStore } from '@/store/filters';
+import { jobStore } from '@/store/job';
 import { ref } from '@vue/reactivity';
 
 
@@ -20,11 +21,12 @@ export default {
   setup(props) {
     
    const newName = ref(props.categoria.name)
-
+     const storeJob = jobStore()
     const onFilter = () => {
       const store = filterStore()
       console.log(newName.value)
         store.addFilter(newName.value)
+        storeJob.filterJobs(store.filtersItens)
     };
 
     return {
