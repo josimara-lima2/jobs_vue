@@ -1,5 +1,5 @@
 <template>
-  <div class="card">
+  <div class="card" :class="{ 'card-before': jobProps.new }">
     <div class="container-info">
       <div class="img">
         <img :alt="logo" :src="getImage(logo)" />
@@ -69,6 +69,7 @@ export default {
 .card {
   padding: 24px;
   margin-bottom: 15px;
+  position: relative;
   background: white;
   border-radius: 4px;
   display: flex;
@@ -76,6 +77,17 @@ export default {
   align-items: center;
   box-shadow: 0 2px 4px 0 rgba(93, 164, 164, 0.2),
     0 3px 10px 0 rgba(93, 164, 164, 0.19);
+}
+
+.card-before::before {
+  content: "";
+  height: 100%;
+  width: 4px;
+  background: #5da4a4;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 4px 0px 0px 4px;
 }
 
 .info {
@@ -91,21 +103,21 @@ export default {
   align-items: center;
 }
 
-.new{
+.new {
   border-radius: 12px;
-  background: #5DA4A4;
+  background: #5da4a4;
   padding: 4px 6px;
   color: white;
 }
 
-.featured{
+.featured {
   border-radius: 12px;
   background: black;
   padding: 4px 6px;
   color: white;
 }
 
-.company{
+.company {
   display: flex;
   gap: 4px;
 }
