@@ -1,22 +1,21 @@
-
 import { defineStore } from "pinia";
 
-export const filterStore = defineStore('filter',{
-    state: () => ({
-       
-            filtersItens: []
-        }),
+export const filterStore = defineStore("filter", {
+  state: () => ({
+    filtersItens: [],
+  }),
 
-        
-        actions:{
-            addFilter:  ( item) => {
-                console.log(item)
-                this.filtersItens.push(item)
-                
-                
-               },
-        },
-       
-    
-})
+  actions: {
+    addFilter(item) {
+      this.filtersItens.push(item);
+    },
 
+    removeFilter(item){
+        this.filtersItens = this.filtersItens.filter(i => {
+            console.log(i, item, i !== item)
+            return i !== item
+        })
+        console.log(this.filtersItens)
+    }
+  },
+});

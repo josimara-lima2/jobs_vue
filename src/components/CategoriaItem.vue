@@ -6,6 +6,7 @@
  
  <script>
 //import { filterStore } from '@/store/filters';
+import { filterStore } from '@/store/filters';
 import { ref } from '@vue/reactivity';
 
 
@@ -21,9 +22,9 @@ export default {
    const newName = ref(props.categoria.name)
 
     const onFilter = () => {
-      //const store = filterStore()
+      const store = filterStore()
       console.log(newName.value)
-        //store.addFilter(newName.value)
+        store.addFilter(newName.value)
     };
 
     return {
