@@ -64,8 +64,8 @@ export default {
 }
 
 .card-filter:hover {
-  color: hsl(180, 31%, 95%);
-  background: hsl(180, 29%, 50%);
+  /* color: hsl(180, 31%, 95%); */
+  /* background: hsl(180, 29%, 50%); */
 }
 
 .btn-remove{

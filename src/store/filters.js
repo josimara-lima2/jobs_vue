@@ -16,6 +16,10 @@ export const filterStore = defineStore("filter", {
             return i !== item
         })
         console.log(this.filtersItens)
+    },
+    removeAllFilters(){
+      this.filtersItens = []
     }
+
   },
 });

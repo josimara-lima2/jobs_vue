@@ -8,7 +8,7 @@
         <div class="info">
           <div class="company">
             {{ jobProps.company }}
-            <div class="tags">
+            <div class="tags"> 
               <span class="new" v-if="jobProps.new">New!</span>
               <span class="featured" v-if="jobProps.featured">Featured</span>
             </div>
@@ -193,19 +193,21 @@ export default {
   .categorias {
     align-items: end;
     width: 100% !important;
+    border-top: .0625rem solid #8e9593;
+    padding-top: 1rem;
   }
   .info {
     width: 100%;
   }
   .img {
     position: absolute;
-    top: -25px;
+    top: -20px;
     left: 20px;
   }
 
   .img img {
-    width: 60px;
-    height: 60px;
+    width: 55px;
+    height: 55px;
   }
 
   .container-items {

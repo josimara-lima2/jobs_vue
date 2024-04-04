@@ -1,9 +1,9 @@
 <template>
   <header>
-    <img :src="require('@/assets/images/bg-header-desktop.svg')" alt="teste">
+    <img :src="require('@/assets/images/bg-header-desktop.svg')" alt="header">
   </header>
  <div class="container">
-  <WrapperFilter/>
+  <WrapperFilter />
   <JobItems />
  </div>
 </template>
@@ -49,6 +49,11 @@ header img{
 
 .container{
   padding: 24px;
-}
 
+}
+@media (max-width:400px){
+  .container .wrapper-filter {
+    margin-bottom: 2.5rem;
+  }
+}
 </style>
