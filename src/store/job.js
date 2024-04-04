@@ -6,14 +6,16 @@ export const jobStore = defineStore('job',{
         return{
             job:[
                 
-            ]
+            ],
+          
         }},
 
         
         actions:{
             async getUsers(){
                 try{
-                   await axios.get('http://localhost:3000/jobs').then(r =>  {
+                    const url = process.env.REACT_APP_API_URL_LOCAL || process.env.REACT_APP_API_URL_NETLIFY
+                   await axios.get(url+'/jobs').then(r =>  {
                     this.$patch({
                         job: r.data
                     }) 
@@ -26,7 +28,8 @@ export const jobStore = defineStore('job',{
             },
 
            async filterJobs(searchs){
-                await axios.get('http://localhost:3000/jobs').then(r =>  {
+            const   url= process.env.REACT_APP_API_URL_LOCAL || process.env.REACT_APP_API_URL_NETLIFY
+                await axios.get(url+'/jobs').then(r =>  {
                 const filterLanguages =  r.data.filter(item => {
                     const itens = [...item.languages, ...item.tools ]
                     return  searchs.every(item => itens.includes(item))
