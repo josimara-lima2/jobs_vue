@@ -2,10 +2,10 @@
   <header>
     <img :src="require('@/assets/images/bg-header-desktop.svg')" alt="header">
   </header>
- <div class="container">
+ <main class="container">
   <WrapperFilter />
   <JobItems />
- </div>
+ </main>
 </template>
 
 <script>
