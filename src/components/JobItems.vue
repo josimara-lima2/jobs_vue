@@ -23,7 +23,9 @@ export default {
         store,
         round
        }
-    }
+    },
+
+  
 }
 </script>
 

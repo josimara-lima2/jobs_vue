@@ -11,14 +11,13 @@
 <script>
 import JobItems from './components/JobItems.vue';
 import WrapperFilter from './components/WrapperFilter.vue';
-import {jobStore} from '@/store/job'
 
 export default {
     components:{ JobItems,
     WrapperFilter},
    setup(){
-    const store = jobStore()
-        store.getUsers()
+   // const store = jobStore()
+       // store.getUsers()
    }
 }
 </script>

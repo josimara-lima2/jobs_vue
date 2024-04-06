@@ -1,6 +1,7 @@
 import axios from "axios";
 import { defineStore } from "pinia";
 
+
 export const jobStore = defineStore('job',{
     state: () => {
         return{
@@ -160,18 +161,35 @@ export const jobStore = defineStore('job',{
 
         
         actions:{
+            
+            // request({      
+            //     url: "https://data.usajobs.gov/api/search",      
+            //     method: 'GET',      
+            //     headers: {          
+            //         "Host": host,          
+            //         "User-Agent": userAgent,          
+            //         "Authorization-Key": authKey      
+            //     }  
+            // }, function(error, response, body) {      
+            //     var data = JSON.parse(body);  
+            // }),
             async getUsers(){
-                try{
-                   await axios.get('http://localhost:3000/jobs').then(r =>  {
+                const authKey = "CR0zjZRlwz+oeAW3bl+wzXFw/6eCnsdjUIanKnUi6Sg="
+            
+              await  axios({
+                  method: 'get',
+                  url: 'https://data.usajobs.gov/api/search?DatePosted=60',
+                  headers: {
+                  
+                    'Authorization-Key': authKey
+                  }
+                }).then(response => {
                     this.$patch({
-                        job: r.data
-                    }) 
-                    
-                })
-
-                }catch(error){
-                    console.log(error)
-                }
+                        job: response.data?.SearchResult?.SearchResultItems
+                    })
+                }).catch(error => {
+                  console.error(error);
+                });
             },
 
            async filterJobs(searchs){
@@ -193,6 +211,7 @@ export const jobStore = defineStore('job',{
         },
         persist:{
             enabled:true
-        }
+        },
+     
     
 })

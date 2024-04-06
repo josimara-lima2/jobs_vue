@@ -31,7 +31,7 @@ export default {
       console.log(storeJob.job)
      //  store.filtersItens.map(item => storeJob.filterJobs(item))
      }else{
-       storeJob.getUsers()
+       //storeJob.getUsers()
      }
     };
 

@@ -1,39 +1,44 @@
 <template>
   <div class="card" :class="{ 'card-before': jobProps.new }">
-    <div class="img">
-      <img :alt="logo" :src="getImage(logo)" />
-    </div>
+     <div class="img">
+      <img :alt="logo" :src="'https://avatar.iran.liara.run/username?username=' + jobProps.MatchedObjectDescriptor?.PositionTitle" />
+
+    </div> 
     <div class="container-items">
       <div class="container-info">
         <div class="info">
           <div class="company">
-            {{ jobProps.company }}
-            <div class="tags"> 
-              <span class="new" v-if="jobProps.new">New!</span>
-              <span class="featured" v-if="jobProps.featured">Featured</span>
+            {{ jobProps.MatchedObjectDescriptor?.PositionTitle }}
+            <div class="tags">
+              <!-- <span class="new" v-if="jobProps.new">New!</span> -->
+              <span
+                class="featured"
+                v-if="
+                  jobProps.MatchedObjectDescriptor?.UserArea?.Details
+                    .SecurityClearance === 'Secret'
+                "
+                >Secret</span
+              >
             </div>
           </div>
           <div></div>
-          <div class="position">{{ position }}</div>
+          <div class="position">
+          
+          </div>
           <div class="dados">
-            <span>{{ jobProps.postedAt }}</span>
+            <span>{{ jobProps.MatchedObjectDescriptor?.PublicationStartDate }}</span>
             <span class="separator"></span>
-            <span>{{ jobProps.contract }}</span> <span class="separator"></span>
-            <span>{{ jobProps.location }}</span>
+            <span>{{ jobProps.MatchedObjectDescriptor?.PositionLocationDisplay }}</span>
           </div>
         </div>
       </div>
       <div class="categorias">
-        <CategoriaItem
-          :categoria="{ name: language }"
-          v-for="language in languages"
-          :key="language + round"
+         <CategoriaItem
+          :categoria="{ name: category.Name }"
+          v-for="category in jobProps.MatchedObjectDescriptor.JobCategory"
+          :key="category.Code + round"
         />
-        <CategoriaItem
-          :categoria="{ name: tool }"
-          v-for="tool in tools"
-          :key="tool + round"
-        />
+     
       </div>
     </div>
   </div>
@@ -57,6 +62,7 @@ export default {
     const tools = ref(props.job.tools);
     const role = ref(props.job.role);
     const jobProps = ref(props.job);
+    console.log(jobProps.value.MatchedObjectDescriptor);
     const getImage = (imagePath) => {
       return require(`../assets/images/${imagePath}`);
     };
@@ -72,7 +78,7 @@ export default {
       jobProps,
     };
   },
-  components: { CategoriaItem },
+  components: {CategoriaItem},
 };
 </script>
 
@@ -89,6 +95,9 @@ export default {
   align-items: center;
   box-shadow: 0 2px 4px 0 rgba(93, 164, 164, 0.2),
     0 3px 10px 0 rgba(93, 164, 164, 0.19);
+}
+img{
+  width: 100px;
 }
 
 .card-before::before {
@@ -132,6 +141,8 @@ export default {
   font-weight: 600;
   color: #253031;
   font-size: 18px;
+  display: inline-flex;
+  gap: 0.5rem;
 }
 .new {
   border-radius: 12px;
@@ -193,7 +204,7 @@ export default {
   .categorias {
     align-items: end;
     width: 100% !important;
-    border-top: .0625rem solid #8e9593;
+    border-top: 0.0625rem solid #8e9593;
     padding-top: 1rem;
   }
   .info {
