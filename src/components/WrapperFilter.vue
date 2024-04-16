@@ -26,10 +26,12 @@ export default {
     const round = ref(Math.random(0, 10));
     const clearFilters = () => {
       store.removeAllFilters()
+      storeJob.getUsers()
     }
     watch(store.filtersItens, () => {
         storeJob.filterJobs(store.filtersItens)
     }, {deep:true})
+
     return {
       store,
       round,

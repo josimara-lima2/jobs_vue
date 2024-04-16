@@ -10,16 +10,22 @@ import {jobStore} from '@/store/job'
 
 export default {
     components:{JobItem},
+    computed: {
     
+    jobsList() {
+      
+      return this.store.job
+    }
+  },
     setup(){
         const store = jobStore()
     
-        const jobsList = store.job
+        
         const round = ref(Math.random(0,10))
 
        
        return{
-        jobsList,
+    
         store,
         round
        }

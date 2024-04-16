@@ -193,10 +193,22 @@ export const jobStore = defineStore('job',{
             },
 
            async filterJobs(searchs){
-                await axios.get('http://localhost:3000/jobs').then(r =>  {
-                const filterLanguages =  r.data.filter(item => {
-                    const itens = [...item.languages, ...item.tools ]
-                    return  searchs.every(item => itens.includes(item))
+            const authKey = "CR0zjZRlwz+oeAW3bl+wzXFw/6eCnsdjUIanKnUi6Sg="
+                await axios({   method: 'get',
+                url: 'https://data.usajobs.gov/api/search?DatePosted=60',
+                headers: {
+                
+                  'Authorization-Key': authKey
+                }}).then(r =>  {
+                  console.log({r})
+                const filterLanguages =  r.data?.SearchResult?.SearchResultItems.filter(item => {
+                  const names = item.MatchedObjectDescriptor?.JobCategory.map(i => i.Name)
+                    const itens = [...names]
+                    console.log({itens, searchs})
+                    return  searchs.every(item => {
+                      console.log(item.Name)
+                      return itens.includes(item)
+                    })
                 })
                 console.log(filterLanguages, 'aqquii')
                 // const filtertools =  r.data.filter(item => {

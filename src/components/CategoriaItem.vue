@@ -24,7 +24,7 @@ export default {
      const storeJob = jobStore()
     const onFilter = () => {
       const store = filterStore()
-      console.log(newName.value)
+      
         store.addFilter(newName.value)
         storeJob.filterJobs(store.filtersItens)
     };

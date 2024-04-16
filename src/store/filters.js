@@ -7,6 +7,7 @@ export const filterStore = defineStore("filter", {
 
   actions: {
     addFilter(item) {
+      console.log(item)
       this.filtersItens.push(item);
     },
 

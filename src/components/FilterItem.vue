@@ -29,9 +29,9 @@ export default {
      if(store.filtersItens.length){
       storeJob.filterJobs(store.filtersItens)
       console.log(storeJob.job)
-     //  store.filtersItens.map(item => storeJob.filterJobs(item))
+       store.filtersItens.map(item => storeJob.filterJobs(item))
      }else{
-       //storeJob.getUsers()
+       storeJob.getUsers()
      }
     };
 

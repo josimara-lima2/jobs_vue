@@ -1,9 +1,14 @@
 <template>
   <div class="card" :class="{ 'card-before': jobProps.new }">
-     <div class="img">
-      <img :alt="logo" :src="'https://avatar.iran.liara.run/username?username=' + jobProps.MatchedObjectDescriptor?.PositionTitle" />
-
-    </div> 
+    <div class="img">
+      <img
+        :alt="logo"
+        :src="
+          'https://avatar.iran.liara.run/username?username=' +
+          jobProps.MatchedObjectDescriptor?.PositionTitle
+        "
+      />
+    </div>
     <div class="container-items">
       <div class="container-info">
         <div class="info">
@@ -14,31 +19,31 @@
               <span
                 class="featured"
                 v-if="
-                  jobProps.MatchedObjectDescriptor?.UserArea?.Details
-                    .SecurityClearance === 'Secret'
+                  jobProps.MatchedObjectDescriptor?.UserArea?.Details?.SecurityClearance === 'Secret'
                 "
                 >Secret</span
               >
             </div>
           </div>
           <div></div>
-          <div class="position">
-          
-          </div>
+          <div class="position"></div>
           <div class="dados">
-            <span>{{ jobProps.MatchedObjectDescriptor?.PublicationStartDate }}</span>
+            <span>{{
+              jobProps.MatchedObjectDescriptor?.PublicationStartDate
+            }}</span>
             <span class="separator"></span>
-            <span>{{ jobProps.MatchedObjectDescriptor?.PositionLocationDisplay }}</span>
+            <span>{{
+              jobProps.MatchedObjectDescriptor?.PositionLocationDisplay
+            }}</span>
           </div>
         </div>
       </div>
       <div class="categorias">
-         <CategoriaItem
+        <CategoriaItem
           :categoria="{ name: category.Name }"
-          v-for="category in jobProps.MatchedObjectDescriptor.JobCategory"
+          v-for="category in jobProps.MatchedObjectDescriptor?.JobCategory"
           :key="category.Code + round"
         />
-     
       </div>
     </div>
   </div>
@@ -62,7 +67,7 @@ export default {
     const tools = ref(props.job.tools);
     const role = ref(props.job.role);
     const jobProps = ref(props.job);
-    console.log(jobProps.value.MatchedObjectDescriptor);
+    console.log(jobProps.value);
     const getImage = (imagePath) => {
       return require(`../assets/images/${imagePath}`);
     };
@@ -78,7 +83,7 @@ export default {
       jobProps,
     };
   },
-  components: {CategoriaItem},
+  components: { CategoriaItem },
 };
 </script>
 
@@ -96,7 +101,7 @@ export default {
   box-shadow: 0 2px 4px 0 rgba(93, 164, 164, 0.2),
     0 3px 10px 0 rgba(93, 164, 164, 0.19);
 }
-img{
+img {
   width: 100px;
 }
 
